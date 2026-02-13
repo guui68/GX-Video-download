@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>জিএক্স ডাউনলোড</title>
+    <title>জিএক্স ডাউনলোড - প্রো ভিডিও ডাউনলোডার</title>
     <style>
-        /* পুরো পেজের মার্জিন-প্যাডিং জিরো করা */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* স্ক্রলবার কন্ট্রোল */
-            font-family: 'SolaimanLipi', Arial, sans-serif;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            background-color: #000;
         }
 
-        /* আপনার নিজস্ব হেডার বার */
-        .header-bar {
-            background-color: #000; /* কালো ব্যাকগ্রাউন্ড */
-            color: #ffffff;
-            padding: 12px 0;
+        /* আপনার নিজস্ব স্টাইলিশ হেডার */
+        .my-header {
+            background: linear-gradient(90deg, #ff0050, #00f2ea); /* আকর্ষণীয় গ্রাডিয়েন্ট */
+            color: white;
+            padding: 15px;
             text-align: center;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
-            border-bottom: 2px solid #e91e63; /* নিচে একটি বর্ডার */
-            z-index: 999;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* আইফ্রেম কন্টেইনার */
-        .iframe-container {
+        /* কন্টেন্ট এরিয়া যেখানে অন্য সাইট দেখাবে */
+        .web-container {
             flex-grow: 1;
             width: 100%;
             height: 100%;
@@ -47,13 +48,21 @@
 </head>
 <body>
 
-    <div class="header-bar">
+    <div class="my-header">
         জিএক্স ডাউনলোড
     </div>
 
-    <div class="iframe-container">
-        <iframe src="https://snapsave.app/" id="myIframe"></iframe>
+    <div class="web-container">
+        <iframe src="https://allorigins.win/dump?url=https://snaptik.app/en2" id="loader-frame"></iframe>
     </div>
+
+    <script>
+        // যদি উপরের প্রক্সি কাজ না করে তবে সরাসরি লোড করার ব্যাকআপ প্ল্যান
+        var iframe = document.getElementById('loader-frame');
+        iframe.onerror = function() {
+            this.src = "https://snaptik.app/en2";
+        };
+    </script>
 
 </body>
 </html>
